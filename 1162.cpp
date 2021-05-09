@@ -1,7 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
-#include <math.h>
 
 using namespace std;
 
@@ -62,18 +60,18 @@ int main() {
     dist[s-1] = money;
     
     for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < 2*m; ++j) {
-            if (dist[edges[j]->from] > 0) {
-                if (dist[edges[j]->to] < edges[j]->weight.change(dist[edges[j]->from])) {
+        for (edge* e: edges) {
+            if (dist[e->from] > 0) {
+                if (dist[e->to] < e->weight.change(dist[e->from])) {
                     /*
                     если на n-ой итерации изменяются веса, то 
                     есть положительный цикл, следовательно, ответ на задачу- ДА
                     */
-                    if (i == n-1 && dist[edges[j]->to] != -1) {
+                    if (i == n-1 && dist[e->to] != -1) {
                         cout << "YES";
                         return 0;
                     } else {
-                       dist[edges[j]->to] = edges[j]->weight.change(dist[edges[j]->from]);
+                       dist[e->to] = e->weight.change(dist[e->from]);
                     }
                 }
             }
