@@ -8,6 +8,11 @@ int cur = 1;
 struct point {
     int x, y;
 
+    point() {
+        x = 1;
+        y = 1;
+    }
+    
     point(int _x, int _y) {
         x = _x;
         y = _y;
