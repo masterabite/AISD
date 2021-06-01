@@ -10,7 +10,8 @@ int main() {
     cin >> n;
     
     
-    long long answer = 0, ways = n*(n-1);
+    long long answer = 0, ways = n;
+    ways *= (n-1);
     
     int* ax = new int[n]; 
     int* ay = new int[n];
